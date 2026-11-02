@@ -41,7 +41,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:textColorHint="#A0A4B0"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <!-- Campo de Senha -->
     <EditText
@@ -55,13 +55,14 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:textColorHint="#A0A4B0"
-        android:textSize="14sp" />
+        android:textSize="16sp" />
 
     <!-- Botão Entrar -->
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btLogin"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/bg_button"
         android:stateListAnimator="@null"
         android:text="@string/Btn_Entrar"
@@ -69,5 +70,42 @@
         android:textColor="@android:color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvMensagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp"
+        android:textAlignment="center"
+        android:textColor="#EF0A0A" />
+
+    <!-- Linha divisória fina acima do rodapé -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E7EB"
+        android:layout_marginBottom="12dp" />
+
+
+    <!-- Botão de Sair no Rodapé (Centralizado) -->
+    <LinearLayout
+        android:id="@+id/layoutLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Btn_Sair"
+            android:textColor="#DC2626"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.bibliotecando
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,9 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MinhaEstante : AppCompatActivity() {
+
+    private lateinit var btSair: LinearLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -18,11 +22,14 @@ class MinhaEstante : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+
             // Adiciona o padding das barras do sistema, mas garante uma margem lateral fixa de 32dp (convertida para pixels)
             val lateralPadding = (32 * resources.displayMetrics.density).toInt()
             v.setPadding(lateralPadding, systemBars.top, lateralPadding, systemBars.bottom)
             insets
         }
+
+        btSair = findViewById(R.id.layoutLogout)
 
         // Referências das Abas
         val tabAndamento = findViewById<LinearLayout>(R.id.tabAndamento)
@@ -93,6 +100,25 @@ class MinhaEstante : AppCompatActivity() {
             txtQueroLer.setTypeface(null, android.graphics.Typeface.BOLD)
             lineQueroLer.setBackgroundColor(corAtiva)
 
+        }
+
+        // 1. Encontre o layout de logout pelo ID que criamos no XML
+        btSair = findViewById<LinearLayout>(R.id.layoutLogout)
+
+        btSair.setOnClickListener {
+            // Cria um diálogo de confirmação
+            android.app.AlertDialog.Builder(this)
+                .setTitle("Terminar sessão")
+                .setMessage("Tem certeza de que deseja sair da sua conta?")
+                .setPositiveButton("Sim") { _, _ ->
+                    // Ação executada se o utilizador clicar em "Sim"
+                    val intent = Intent(this, Login::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    finish()
+                }
+                .setNegativeButton("Cancelar", null) // Fecha o pop-up sem fazer nada se clicar em "Cancelar"
+                .show()
         }
     }
 }
