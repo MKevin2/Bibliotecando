@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bibliotecando</string>
+    <string name="contentDescriptionLogo">Logo Bibliotecando</string>
+    <string name="Lg_Titulo">Bem-vindo!</string>
+    <string name="Lg_SubTitulo">Faça login para sincronizar.</string>
+    <string name="Lg_Email">E-mail do Usuário</string>
+    <string name="Lg_Senha">••••••••</string>
+    <string name="Btn_Entrar">Entrar</string>
+</resources>
