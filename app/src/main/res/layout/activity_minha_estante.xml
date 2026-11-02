@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:paddingTop="32dp"
+    android:paddingBottom="24dp">
+
+    <!-- Conteúdo do Topo (Título e Abas) -->
+    <LinearLayout
+        android:id="@+id/layoutTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Título Principal -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/Titulo_MinhaEstante"
+            android:textColor="@android:color/black"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Abas de Navegação -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- Aba Andamento -->
+            <LinearLayout
+                android:id="@+id/tabAndamento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/txtAndamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/Tab_Andamento"
+                    android:textColor="#5048E5"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Linha indicadora de Andamento -->
+                <View
+                    android:id="@+id/lineAndamento"
+                    android:layout_width="75dp"
+                    android:layout_height="2dp"
+                    android:background="#5048E5" />
+            </LinearLayout>
+
+            <!-- Aba Concluídos -->
+            <LinearLayout
+                android:id="@+id/tabConcluidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/txtConcluidos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/Tab_Concluídos"
+                    android:textColor="#A0A4B0"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <!-- Linha indicadora de Concluídos (invisível inicialmente) -->
+                <View
+                    android:id="@+id/lineConcluidos"
+                    android:layout_width="75dp"
+                    android:layout_height="2dp"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+
+            <!-- Aba Quero ler -->
+            <LinearLayout
+                android:id="@+id/tabQueroLer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/txtQueroLer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:text="@string/Tab_QueroLer"
+                    android:textColor="#A0A4B0"
+                    android:textSize="14sp"
+                    android:textStyle="normal" />
+
+                <!-- Linha indicadora de Quero ler (invisível inicialmente) -->
+                <View
+                    android:id="@+id/lineQueroLer"
+                    android:layout_width="75dp"
+                    android:layout_height="2dp"
+                    android:background="@android:color/transparent" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Linha divisória fina abaixo das abas -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E7EB"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp" />
+    </LinearLayout>
+
+    <!-- Card do Livro -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBook"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@id/layoutTop"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#F9FAFB"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E5E7EB">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp">
+
+            <!-- Capa Fictícia do Livro -->
+            <View
+                android:layout_width="45dp"
+                android:layout_height="56dp"
+                android:background="#D1D5DB" />
+
+            <!-- Informações do Livro -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clean Code"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pág. 120/450"
+                    android:textSize="12sp"
+                    android:textColor="#6B7280" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Linha horizontal simples (HR) acima do rodapé -->
+    <View
+        android:id="@+id/dividerFooter"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E5E7EB"
+        android:layout_above="@id/layoutLogout"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Botão Flutuante (FAB) de Adicionar sem sombra pesada -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_above="@id/dividerFooter"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="#5048E5"
+        app:tint="@android:color/white"
+        app:elevation="0dp"
+        app:pressedTranslationZ="0dp"
+        app:useCompatPadding="false" />
+
+    <!-- Botão de Sair no Rodapé (Movido para o final) -->
+    <LinearLayout
+        android:id="@+id/layoutLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Btn_Sair"
+            android:textColor="#DC2626"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>

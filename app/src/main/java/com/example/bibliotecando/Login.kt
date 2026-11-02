@@ -1,5 +1,6 @@
 package com.example.bibliotecando
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -19,5 +20,17 @@ class Login : AppCompatActivity() {
             v.setPadding(lateralPadding, systemBars.top, lateralPadding, systemBars.bottom)
             insets
         }
+
+        val btnLogin = findViewById<android.widget.Button>(R.id.btnLogin)
+
+        btnLogin.setOnClickListener {
+            // Cria a intenção de ir da Login para a EstanteActivity
+            val intent = Intent(this, MinhaEstante::class.java)
+            startActivity(intent)
+
+            // Opcional: fecha a tela de login para que o usuário não volte para ela ao apertar o botão "voltar" do celular
+            finish()
+        }
+
     }
 }

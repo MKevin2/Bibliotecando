@@ -6,4 +6,9 @@
     <string name="Lg_Email">E-mail do Usuário</string>
     <string name="Lg_Senha">••••••••</string>
     <string name="Btn_Entrar">Entrar</string>
+    <string name="Btn_Sair">➜ Sair</string>
+    <string name="Tab_QueroLer">Quero Ler</string>
+    <string name="Tab_Concluídos">Concluídos</string>
+    <string name="Tab_Andamento">Andamento</string>
+    <string name="Titulo_MinhaEstante">Minha Estante</string>
 </resources>
