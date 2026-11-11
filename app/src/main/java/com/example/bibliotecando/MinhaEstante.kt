@@ -22,13 +22,12 @@ class MinhaEstante : AppCompatActivity() {
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-
-            // Adiciona o padding das barras do sistema, mas garante uma margem lateral fixa de 32dp (convertida para pixels)
             val lateralPadding = (32 * resources.displayMetrics.density).toInt()
             v.setPadding(lateralPadding, systemBars.top, lateralPadding, systemBars.bottom)
             insets
         }
 
+        // Fazendo o vínculo do componente declarado
         btSair = findViewById(R.id.layoutLogout)
 
         // Referências das Abas
@@ -102,9 +101,7 @@ class MinhaEstante : AppCompatActivity() {
 
         }
 
-        // 1. Encontre o layout de logout pelo ID que criamos no XML
-        btSair = findViewById<LinearLayout>(R.id.layoutLogout)
-
+        // Ação do Botão de Sair
         btSair.setOnClickListener {
             // Cria um diálogo de confirmação
             android.app.AlertDialog.Builder(this)
@@ -117,7 +114,7 @@ class MinhaEstante : AppCompatActivity() {
                     startActivity(intent)
                     finish()
                 }
-                .setNegativeButton("Cancelar", null) // Fecha o pop-up sem fazer nada se clicar em "Cancelar"
+                .setNegativeButton("Cancelar", null) // Fecha o POP-UP sem fazer nada se clicar em "Cancelar"
                 .show()
         }
     }

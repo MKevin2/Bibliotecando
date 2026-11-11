@@ -17,7 +17,6 @@ class Login : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btLogin: Button
-
     private lateinit var btSair: LinearLayout
     private lateinit var tvMensagem: TextView
 
@@ -33,7 +32,7 @@ class Login : AppCompatActivity() {
             insets
         }
 
-        // IDs corrigidos para corresponderem exatamente ao XML
+        // Fazendo o vínculo dos componentes declarados
         btLogin = findViewById(R.id.btLogin)
         btSair = findViewById(R.id.layoutLogout)
         etEmail = findViewById(R.id.etEmail)
@@ -55,13 +54,11 @@ class Login : AppCompatActivity() {
         }
 
         btSair.setOnClickListener {
-
             AlertDialog.Builder(this)
                 .setTitle("Finalizar aplicativo")
                 .setMessage("Deseja realmente sair do aplicativo?")
                 .setNegativeButton("CANCELAR", null)
                 .setPositiveButton("SAIR") { _, _ ->
-
                     finishAffinity()
                 }
                 .show()
