@@ -1,3 +1,4 @@
+
 package com.example.bibliotecando
 
 import android.content.Intent
@@ -10,6 +11,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.cardview.widget.CardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MinhaEstante : AppCompatActivity() {
 
@@ -20,17 +23,25 @@ class MinhaEstante : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_minha_estante)
 
+        // Ajuste das margens da tela
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val lateralPadding = (32 * resources.displayMetrics.density).toInt()
-            v.setPadding(lateralPadding, systemBars.top, lateralPadding, systemBars.bottom)
+
+            v.setPadding(
+                lateralPadding,
+                systemBars.top,
+                lateralPadding,
+                systemBars.bottom
+            )
+
             insets
         }
 
-        // Fazendo o vínculo do componente declarado
+        // Referência do botão de sair
         btSair = findViewById(R.id.layoutLogout)
 
-        // Referências das Abas
+        // Referências das abas
         val tabAndamento = findViewById<LinearLayout>(R.id.tabAndamento)
         val tabConcluidos = findViewById<LinearLayout>(R.id.tabConcluidos)
         val tabQueroLer = findViewById<LinearLayout>(R.id.tabQueroLer)
@@ -43,11 +54,16 @@ class MinhaEstante : AppCompatActivity() {
         val lineConcluidos = findViewById<View>(R.id.lineConcluidos)
         val lineQueroLer = findViewById<View>(R.id.lineQueroLer)
 
+        // Referências dos componentes de navegação
+        val fabAdd = findViewById<FloatingActionButton>(R.id.fabAdd)
+        val cardBook = findViewById<CardView>(R.id.cardBook)
+
         val corAtiva = Color.parseColor("#5048E5")
         val corInativa = Color.parseColor("#A0A4B0")
 
         // Clique na aba Andamento
         tabAndamento.setOnClickListener {
+
             // Ativa Andamento
             txtAndamento.setTextColor(corAtiva)
             txtAndamento.setTypeface(null, android.graphics.Typeface.BOLD)
@@ -66,6 +82,7 @@ class MinhaEstante : AppCompatActivity() {
 
         // Clique na aba Concluídos
         tabConcluidos.setOnClickListener {
+
             // Desativa Andamento
             txtAndamento.setTextColor(corInativa)
             txtAndamento.setTypeface(null, android.graphics.Typeface.NORMAL)
@@ -84,6 +101,7 @@ class MinhaEstante : AppCompatActivity() {
 
         // Clique na aba Quero ler
         tabQueroLer.setOnClickListener {
+
             // Desativa Andamento
             txtAndamento.setTextColor(corInativa)
             txtAndamento.setTypeface(null, android.graphics.Typeface.NORMAL)
@@ -98,23 +116,46 @@ class MinhaEstante : AppCompatActivity() {
             txtQueroLer.setTextColor(corAtiva)
             txtQueroLer.setTypeface(null, android.graphics.Typeface.BOLD)
             lineQueroLer.setBackgroundColor(corAtiva)
-
         }
 
-        // Ação do Botão de Sair
+        // Ação do botão de adicionar livro
+        fabAdd.setOnClickListener {
+            val intent = Intent(this, NovoLivro::class.java)
+            startActivity(intent)
+        }
+
+        // Ação do cartão do livro
+        cardBook.setOnClickListener {
+            val intent = Intent(this, DetalhesLivro::class.java)
+
+            intent.putExtra("titulo", "Clean Code")
+            intent.putExtra("autor", "Robert C. Martin")
+            intent.putExtra("totalPaginas", 450)
+            intent.putExtra("paginasLidas", 120)
+
+            startActivity(intent)
+        }
+
+        // Ação do botão de sair
         btSair.setOnClickListener {
+
             // Cria um diálogo de confirmação
             android.app.AlertDialog.Builder(this)
                 .setTitle("Terminar sessão")
                 .setMessage("Tem certeza de que deseja sair da sua conta?")
                 .setPositiveButton("Sim") { _, _ ->
-                    // Ação executada se o utilizador clicar em "Sim"
+
+                    // Retorna para a tela de login
                     val intent = Intent(this, Login::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                    intent.flags =
+                        Intent.FLAG_ACTIVITY_NEW_TASK or
+                                Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                     startActivity(intent)
                     finish()
                 }
-                .setNegativeButton("Cancelar", null) // Fecha o POP-UP sem fazer nada se clicar em "Cancelar"
+                .setNegativeButton("Cancelar", null)
                 .show()
         }
     }

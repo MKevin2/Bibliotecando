@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
+
+        <!-- Cabeçalho -->
+        <LinearLayout
+            android:id="@+id/layoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/btVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="←"
+                android:textSize="26sp"
+                android:textColor="#6B7280"
+                android:padding="4dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Detalhes"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+
+        </LinearLayout>
+
+        <!-- Capa do Livro -->
+        <View
+            android:id="@+id/imgCapa"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:layout_below="@id/layoutHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:background="#D1D5DB"/>
+
+        <!-- Título -->
+        <TextView
+            android:id="@+id/tvTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgCapa"
+            android:layout_marginTop="8dp"
+            android:text="Clean Code"
+            android:textColor="@android:color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <!-- Autor -->
+        <TextView
+            android:id="@+id/tvAutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitulo"
+            android:text="Robert C. Martin"
+            android:textColor="#6B7280"
+            android:textSize="13sp"
+            android:gravity="center"/>
+
+        <!-- Card Progresso -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardProgresso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvAutor"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#F9FAFB">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvProgresso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Progresso: 120 / 450 pág."
+                    android:textColor="#6B7280"
+                    android:textSize="12sp"/>
+
+                <ProgressBar
+                    android:id="@+id/progressLeitura"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="8dp"
+                    android:max="450"
+                    android:progress="120"
+                    android:progressTint="#5048E5"
+                    android:progressBackgroundTint="#E5E7EB"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card Nota -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardNota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cardProgresso"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#F9FAFB">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nota:"
+                    android:textColor="#374151"
+                    android:textStyle="bold"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tvNota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Leitura obrigatória para engenheiros de software focados em qualidade."
+                    android:textColor="#4B5563"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Botão Atualizar -->
+        <Button
+            android:id="@+id/btAtualizarProgresso"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="24dp"
+            android:text="Atualizar Progresso"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:backgroundTint="#5048E5"/>
+
+    </RelativeLayout>
+
+</ScrollView>
